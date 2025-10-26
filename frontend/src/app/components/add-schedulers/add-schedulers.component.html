@@ -1,0 +1,25 @@
+<div class="container">
+    <app-sidebar></app-sidebar>
+    <div class="content">
+        <form [formGroup]="schedulerForm" (ngSubmit)="onSubmit()">
+            <h2>Add Scheduler</h2>
+            <label for="robot">Select Robot:</label>
+            <select class="form-control" formControlName="robotId" id="robot">
+                <option *ngFor="let robot of robots" [value]="robot.id">{{ robot.id }}</option>
+            </select>
+
+            <label for="zone">Select Zone:</label>
+            <select class="form-control" formControlName="zoneId" id="zone">
+                <option *ngFor="let zone of zones" [value]="zone.id">{{ zone.name }}</option>
+            </select>
+
+            <label for="start">Start Time:</label>
+            <input class="form-control" type="datetime-local" formControlName="startTime" id="start" />
+
+            <label for="end">End Time:</label>
+            <input class="form-control" type="datetime-local" formControlName="endTime" id="end" />
+
+            <button class="btn-primary" type="submit" [disabled]="schedulerForm.invalid">Add Scheduler</button>
+        </form>
+    </div>
+</div>

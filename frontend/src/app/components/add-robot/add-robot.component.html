@@ -1,0 +1,24 @@
+<div class="container">
+    <app-sidebar></app-sidebar>
+    <div class="content">
+        <form [formGroup]="addRobotForm" (ngSubmit)="addRobot()">
+            <h2>Add new Robot</h2>
+            <div class="mb-2">
+            <label>Status</label>
+            <input type="text" formControlName="status" class="form-control" />
+            </div>
+            <div class="mb-2">
+            <label>Battery Level</label>
+            <input type="number" formControlName="batteryLevel" class="form-control" />
+            </div>
+            <div class="mb-2">
+            <label>Water Level</label>
+            <input type="number" formControlName="waterLevel" class="form-control" />
+            </div>
+            <div class="text-end">
+            <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+
+    </div>
+</div>

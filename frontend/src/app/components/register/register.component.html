@@ -1,0 +1,50 @@
+<div class="register">
+    <div class="container">
+        <div class="form-vertical">
+            <img src="assets/11.png" alt="logo" class="logo">
+            <h2 class="title">Create Your Account</h2>
+            <form [formGroup]="signupForm" (ngSubmit)="onSubmit(signupForm)">
+
+                <div class="input-group">
+                    <label>firstname*</label>
+                    <input type="text" required formControlName="firstname">
+                    <div *ngIf="(submitted || f['firstname'].touched) && f['firstname'].invalid">
+                        <div *ngIf="f['firstname'].errors && f['firstname'].errors['required'] " class="error">please enter first name</div>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>lastname*</label>
+                    <input type="text" required formControlName="lastname" >
+                    <div *ngIf="(submitted || f['lastname'].touched) && f['lastname'].invalid">
+                        <div *ngIf="f['lastname'].errors && f['lastname'].errors['required'] " class="error">please enter last name</div>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>email*</label>
+                    <input type="email" required formControlName="email">
+                   
+                    <div  *ngIf="(submitted || f['email'].touched) && f['email'].invalid">
+                        <div *ngIf="f['email'].errors && f['email'].errors['required'] " class="error">please enter email</div>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>password*</label>
+                    <input type="password" required formControlName="password">
+                    
+                    <div  *ngIf="(submitted || f['password'].touched) && f['password'].invalid">
+                        <div *ngIf="f['password'].errors && f['password'].errors['required'] " class="error">please enter password</div>
+                    </div>
+                </div>
+
+                <div class="btn-container">
+                    <button type="submit" [disabled]="signupForm.invalid" class="submit-btn">Sign Up</button>
+                </div>
+
+                <p class="login-link">Already have an account? <a routerLink="/login">Login here</a></p>
+            </form>
+        </div>
+    </div>
+</div>

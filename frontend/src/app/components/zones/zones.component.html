@@ -1,0 +1,32 @@
+<div class="container mt-4">
+  <app-sidebar></app-sidebar>
+  <div class="content">
+    <h2 class="mb-4">Zones List</h2>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let zone of zones">
+        <td>{{ zone.id }}</td>
+        <td>{{ zone.name }}</td>
+        <td>
+          <button class="btn btn-sm btn-primary me-2">Update</button>
+          <button class="btn btn-sm btn-danger" (click)="deleteZone(zone.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="text-end mb-3">
+    <a class="btn btn-success" routerLink="/add-zone">+ Add Zone</a>
+  </div>
+  </div>
+</div>
+
+

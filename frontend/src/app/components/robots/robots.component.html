@@ -1,0 +1,37 @@
+<div class="container mt-4">
+  <app-sidebar></app-sidebar>
+  <div class="content">
+    <h2 class="mb-4">Robot List</h2>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Status</th>
+        <th>Battery Level</th>
+        <th>Water Level</th>
+        <th>Online</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let robot of robots">
+        <td>{{ robot.id }}</td>
+        <td>{{ robot.status }}</td>
+        <td>{{ robot.batteryLevel }}</td>
+        <td>{{ robot.waterLevel }}</td>
+        <td>{{ robot.on }}</td>
+        <td>
+          <button class="btn btn-sm btn-primary me-2">Update</button>
+          <button class="btn btn-sm btn-danger" (click)="deleteRobot(robot.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="text-end mb-3">
+    <a class="btn btn-success" routerLink="/add-robot">+ Add Robot</a>
+  </div>
+  </div>
+</div>
+
