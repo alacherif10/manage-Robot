@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class PointService {
 
-  url = 'http://127.0.0.1:8080/api/point'
+  url = 'http://127.0.0.1:8081/api/point'
       
         constructor(private http : HttpClient) { }
       
