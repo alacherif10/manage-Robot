@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  labels:
+    name: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: backend
+  template:
+    metadata:
+      labels:
+        name: backend      
+    spec:
+      containers:
+        - name: backend
+          image: gcr.io/manage-robot/myapp-backend:v1
+          ports:
+            - containerPort: 8080
