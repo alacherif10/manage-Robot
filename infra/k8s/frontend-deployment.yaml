@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: frontend-deployment
   labels:
-    name: frontend
+    app: frontend
 spec:
   replicas: 1
   selector:
@@ -16,8 +16,6 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: gcr.io/manage-robot/myapp-frontend:v1
+        image: us-docker.pkg.dev/manage-robot/frontend-repo/myapp-frontend:TAG_VERSION
         ports:
         - containerPort: 4200
-
-        

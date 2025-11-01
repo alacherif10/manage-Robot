@@ -3,19 +3,19 @@ kind: Deployment
 metadata:
   name: backend-deployment
   labels:
-    name: backend
+    app: backend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: backend
+      app: backend
   template:
     metadata:
       labels:
-        name: backend      
+        app: backend      
     spec:
       containers:
         - name: backend
-          image: gcr.io/manage-robot/myapp-backend:v1
+          image: us-docker.pkg.dev/manage-robot/backend-repo/myapp-backend:TAG_VERSION
           ports:
             - containerPort: 8080
