@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  labels:
+    app: backend
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend      
+    spec:
+      containers:
+        - name: backend
+          image: us-docker.pkg.dev/manage-robot/backend-repo/myapp-backend:TAG_VERSION
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_DATA_MONGODB_URI
+              value: "mongodb://admin:password123@mongodb-service:27017/manage-robot?authSource=admin"
+            - name: SPRING_DATA_MONGODB_HOST
+              value: "mongodb-service"
+            - name: SPRING_DATA_MONGODB_PORT
+              value: "27017"
+            - name: SPRING_DATA_MONGODB_DATABASE
+              value: "manage-robot"
+            - name: SPRING_DATA_MONGODB_USERNAME
+              value: "admin"
+            - name: SPRING_DATA_MONGODB_PASSWORD
+              value: "password123"
