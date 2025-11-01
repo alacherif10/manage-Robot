@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class RobotService {
-  url = 'http://127.0.0.1:8081/api/scheduler'
+  url = 'http://35.222.253.93:8080/api/scheduler'
 
   constructor(private http : HttpClient) { }
 
