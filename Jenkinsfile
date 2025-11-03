@@ -1,4 +1,4 @@
-pipeline {
+    pipeline {
     agent any
     tools {
         jdk "jdk17"
@@ -25,8 +25,6 @@ pipeline {
                 }
             }
         }
-        // SonarQube Analysis - Skipped for now
-        /*
         stage('SonarQube Analysis') {
             steps {
                 dir('backend') {
@@ -36,13 +34,12 @@ pipeline {
                         -Dsonar.projectName=manage-Robot \
                         -Dsonar.sources=. \
                         -Dsonar.java.binaries=target \
-                        -Dsonar.host.url=http://3.145.108.8:9000 \
+                        -Dsonar.host.url=http://3.128.206.12/:9000 \
                         -Dsonar.login=YOUR_NEW_SONAR_TOKEN
                     """
                 }
             }
         }
-        */
         stage('Build Application') {
             steps {
                 dir('backend') {
