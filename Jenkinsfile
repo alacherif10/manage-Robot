@@ -35,7 +35,7 @@
                         -Dsonar.sources=. \
                         -Dsonar.java.binaries=target \
                         -Dsonar.host.url=http://3.128.206.12/:9000 \
-                        -Dsonar.login=YOUR_NEW_SONAR_TOKEN
+                        -Dsonar.login=squ_adddeebdada6cdceddbaaaee24b6de044e759a64
                     """
                 }
             }
