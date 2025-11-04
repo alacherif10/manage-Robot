@@ -10,7 +10,7 @@ import { User } from 'src/app/models';
 })
 export class ApiService {
 
-  private baseUrl= 'http://35.222.253.93:8080/api/auth/login';
+  private baseUrl= 'http://abbf02380dd7a49f28ea61f8c24ef0d1-1327904513.us-east-2.elb.amazonaws.com//api/auth/login';
 
   private _isLoggedIn$ = new BehaviorSubject<boolean>(false)
   isLoggedIn$ = this._isLoggedIn$.asObservable()
