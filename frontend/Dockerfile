@@ -1,13 +1,15 @@
-# Example for Node.js backend - adjust based on your tech stack
 FROM node:18-alpine
 
 WORKDIR /app
 
 COPY package*.json ./
+
 RUN npm install
 
 COPY . .
 
-EXPOSE 4200
+RUN npm run build
+
+EXPOSE 3000
 
 CMD ["npm", "start"]
