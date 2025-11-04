@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class RegisterService {
-  private signupUrl = 'http://35.222.253.93:8080/api/auth/register';
+  private signupUrl = 'http://abbf02380dd7a49f28ea61f8c24ef0d1-1327904513.us-east-2.elb.amazonaws.com/api/auth/register';
 
   constructor(private http: HttpClient) { }
 
