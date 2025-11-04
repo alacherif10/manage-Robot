@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend-deployment
+  name: mongodb-deployment
   labels:
     app: backend
 spec:
@@ -13,15 +13,15 @@ spec:
       maxUnavailable: 1
   selector:
     matchLabels:
-      app: backend
+      app: mongodb
   template:
     metadata:
       labels:
-        app: backend      
+        app: mongodb      
     spec:
       containers:
-        - name: backend
-          image: us-docker.pkg.dev/manage-robot/backend-repo/myapp-backend:TAG_VERSION
+        - name: mongodb
+          image: mongo:7.0
           ports:
             - containerPort: 8080
           env:
