@@ -53,8 +53,8 @@ public class SecurityConfig {
         // ✅ Ajout de l'IP frontend déployée
         configuration.setAllowedOrigins(Arrays.asList(
             "http://localhost:4200",      // Pour développement local
-            "http://34.63.65.92",          // Frontend déployé
-            "http://34.63.65.92:4200"      // Au cas où
+            "http://abbf02380dd7a49f28ea61f8c24ef0d1-1327904513.us-east-2.elb.amazonaws.com"          // Frontend déployé
+            
         ));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
