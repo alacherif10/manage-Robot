@@ -16,8 +16,8 @@ public class WebConfig {
                 registry.addMapping("/api/**")
                         .allowedOrigins(
                             "http://localhost:4200",           // Pour développement local
-                            "http://34.63.65.92",              // Votre frontend déployé
-                            "http://34.63.65.92:4200"          // Au cas où
+                            "http://abbf02380dd7a49f28ea61f8c24ef0d1-1327904513.us-east-2.elb.amazonaws.com/",              // Votre frontend déployé
+                                
                         )
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
