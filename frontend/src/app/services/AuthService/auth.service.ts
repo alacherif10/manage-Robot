@@ -9,6 +9,6 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   loginUser(email: string, password: string) {
-    return this.http.post('http://abbf02380dd7a49f28ea61f8c24ef0d1-1327904513.us-east-2.elb.amazonaws.com/api/auth/login', { email, password });
+    return this.http.post(' a8ebdd60968494864808f91be085f3b6-1543253353.us-east-2.elb.amazonaws.com/api/auth/login', { email, password });
   }
 }
