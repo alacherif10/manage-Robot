@@ -34,8 +34,8 @@
                         -Dsonar.projectName=manage-Robot \
                         -Dsonar.sources=. \
                         -Dsonar.java.binaries=target \
-                        -Dsonar.host.url=http://3.141.192.10:9000 \
-                        -Dsonar.login=squ_adddeebdada6cdceddbaaaee24b6de044e759a64
+                        -Dsonar.host.url=http://18.222.35.245:9000 \
+                        -Dsonar.login=squ_0a2dc3a16494ae142359f89208d5f7d5e22cb5d3
                     """
                 }
             }
