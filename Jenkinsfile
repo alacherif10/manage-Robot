@@ -1,4 +1,4 @@
-    pipeline {
+pipeline {
     agent any
     tools {
         jdk "jdk17"
@@ -7,7 +7,7 @@
     environment {
         SCANNER_HOME = tool 'sonar-scanner'
         AWS_REGION = 'us-east-2'
-        AWS_ACCOUNT_ID = '117459925946'  // Your AWS account ID from state file
+        AWS_ACCOUNT_ID = '117459925946'
         EKS_CLUSTER_NAME = 'eks-cluster'
         ECR_BACKEND_REPO = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/manage-robot-backend"
         ECR_FRONTEND_REPO = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/manage-robot-frontend"
@@ -47,12 +47,6 @@
                 }
             }
         }
-        stage('Docker Image Scan') {
-            steps {
-                sh "trivy image --format table -o trivy-backend-report.html ${ECR_BACKEND_REPO}:latest || true"
-                sh "trivy image --format table -o trivy-frontend-report.html ${ECR_FRONTEND_REPO}:latest || true"
-            }
-        }
         stage('Build and Push Docker Images') {
             steps {
                 script {
@@ -77,6 +71,31 @@
                             docker push ${ECR_BACKEND_REPO}:latest
                             docker push ${ECR_FRONTEND_REPO}:${BUILD_NUMBER}
                             docker push ${ECR_FRONTEND_REPO}:latest
+                        '''
+                    }
+                }
+            }
+        }
+        stage('Docker Image Scan') {
+            steps {
+                script {
+                    withCredentials([string(credentialsId: 'aws-access-key-id', variable: 'AWS_ACCESS_KEY_ID'),
+                                     string(credentialsId: 'aws-secret-access-key', variable: 'AWS_SECRET_ACCESS_KEY')]) {
+                        sh '''
+                            # Login to ECR for Trivy to pull images
+                            aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com
+                            
+                            # Scan backend image
+                            echo "=== Scanning Backend Image ==="
+                            trivy image --format table -o trivy-backend-report.html ${ECR_BACKEND_REPO}:latest || echo "Backend scan completed with warnings"
+                            
+                            # Scan frontend image
+                            echo "=== Scanning Frontend Image ==="
+                            trivy image --format table -o trivy-frontend-report.html ${ECR_FRONTEND_REPO}:latest || echo "Frontend scan completed with warnings"
+                            
+                            # Display scan summaries
+                            echo "=== Scan Reports Generated ==="
+                            ls -lh trivy-*-report.html
                         '''
                     }
                 }
